@@ -12,6 +12,9 @@ require 'func.php'
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
   <script type="text/javascript">
   function env_select(val)
   {
@@ -40,11 +43,15 @@ require 'func.php'
         document.getElementById("result").innerHTML=response;
       }
     });
-  }
+  };
+  $(document).ready(function() {
+  $(".envSelect").select2();
+  $(".subsystemSelect").select2();
+});
   </script>
   <body style="margin:30px;padding:30px">
         <p>
-        <select id="envSelect" onchange="env_select(this.value);">
+        <select id="envSelect" onchange="env_select(this.value);" class="envSelect" style="width:500px">
                 <option selected>- Select environment: -</option>
                 <?php
                 foreach ($environments as $environments => $value) {
@@ -53,8 +60,9 @@ require 'func.php'
         </select>
         <br/>
         </p>
-        <p id="subsystemSelect">
-        </p>
+        <select id="subsystemSelect" onchange="subsystem_select(this.value);" class="subsystemSelect" style="width:500px">
+                <option selected>- Select subsystem: -</option>
+              </select>
       <p id="result"></p>
   </body>
 </html>
