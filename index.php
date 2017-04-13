@@ -45,8 +45,12 @@ require 'func.php'
     });
   };
   $(document).ready(function() {
-  $(".envSelect").select2();
-  $(".subsystemSelect").select2();
+  $(".envSelect").select2({
+    placeholder: "Select environment"
+  });
+  $(".subsystemSelect").select2({
+    placeholder: "Select subsystem"
+  });
 });
   </script>
   <body style="margin:30px;padding:30px">
