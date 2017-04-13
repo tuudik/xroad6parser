@@ -44,13 +44,17 @@ if(isset($_POST['selectedEnv']))
   $sharedParamsXML = simplexml_load_file($sharedParamsURL);
   if(!isset($_POST['subsystemID']))
   {
+  //echo "<select id=\"subsystemSelect\" onchange=\"subsystem_select(this.value);\">
+  //        <option selected>- Select subsystem: -</option>";
   foreach ($sharedParamsXML->member as $member)
   {
     echo "<optgroup label=\"".$member->memberCode." - ".$member->name."\">";
     foreach($member->subsystem as $subsystem){
-      echo "<option value=\"".$subsystem['id']."\">".$subsystem->subsystemCode."</option>";
+      echo "<option value=\"".$subsystem['id']."\">".$subsystem->subsystemCode." - ".$member->memberCode." - ".$member->name."</option>";
+
     }
   }
+//  echo "</select>";
 }
 }
 if(isset($_POST['subsystemID']))
