@@ -2,6 +2,7 @@ deploy-master.php
 deploy-master-config.php
 .well-known
 robots.txt
+README.md
 *.DS_Store
 .AppleDouble
 .LSOverride
