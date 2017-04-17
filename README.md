@@ -5,7 +5,7 @@ This is small and badly written PHP/AJAX snippet to parse X-road v6 globalconfig
 Feel free to contribute to this crappy PHP/AJAX snippet to make it less crappy. Make PR's and I'll try to do my best to get your enhancments merged. Also let me know if you find any issues.
 
 # Automatic deployment
-Both branches are automatically deployed after successfully commits.
+Both branches are automatically deployed after successful commits.
 
 **Master branch:** https://xroad.radr.eu/
 
