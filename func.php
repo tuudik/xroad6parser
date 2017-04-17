@@ -43,6 +43,7 @@ $environments = array(
         $sharedParamsXML = simplexml_load_file($sharedParamsURL);
         if(!isset($_POST['subsystemID']))
         {
+          echo "<option selected>- Select subsystem: -</option>";
           foreach ($sharedParamsXML->member as $member)
           {
             echo "<optgroup label=\"".$member->memberCode." - ".$member->name."\">";
