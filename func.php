@@ -57,7 +57,7 @@ $environments = array(
       {
         $subsystemID = $_POST['subsystemID'];
         $securityServers = $sharedParamsXML->xpath("/ns3:conf/securityServer[client='".$subsystemID."']");
-        $subsystemInfo = $sharedParamsXML->xpath("/ns3:conf/member[@id='".$subsystemID."']");
+        $subsystemInfo = $sharedParamsXML->xpath("/ns3:conf/member/subsystem[@id='".$subsystemID."']");
         
         echo "<strong>Subsystem Code: </strong>".$subsystemInfo->subsystem->subsystemCode."<br/>";
         echo "<strong>Environment: </strong>".$envName."<br/>";
