@@ -67,6 +67,13 @@ $environments = array(
           echo "<strong>Owner Code: </strong>" .  $ssOwner->memberCode . "<br/>";
           echo "<strong>Server Code: </strong>" . $securityServer->serverCode . "<br/>";
           echo "<strong>Server IP: </strong>" . $securityServer->address . "<br/>";
+          $ip = $securityServer->address;
+          if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+            echo("<strong>Server IP: </strong> $ip <br/>");
+          } else {
+            echo("<strong>Server DNS: </strong> $ip <br/>");
+            echo("<strong>Server IP: </strong>" . gethostbyname($ip) . "<br/>");
+          }
         }
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
