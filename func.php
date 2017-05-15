@@ -66,7 +66,6 @@ $environments = array(
           echo "<strong>Owner Name: </strong>" . $ssOwner->name. "<br/>";
           echo "<strong>Owner Code: </strong>" .  $ssOwner->memberCode . "<br/>";
           echo "<strong>Server Code: </strong>" . $securityServer->serverCode . "<br/>";
-          echo "<strong>Server IP: </strong>" . $securityServer->address . "<br/>";
           $ip = $securityServer->address;
           if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
             echo("<strong>Server IP: </strong> $ip <br/>");
