@@ -48,7 +48,7 @@ $environments = array(
             unlink($filename);
           }
           $file = fopen($filename, "w") or die("Unable to open file!");
-          fwrite($file, "subSystem,memberCode,memberName\n");
+          fwrite($file, "\xEF\xBB\xBFsubSystem,memberCode,memberName\n");
           
           echo "<option selected>- Select subsystem: -</option>";
           foreach ($sharedParamsXML->member as $member)
