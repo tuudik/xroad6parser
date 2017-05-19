@@ -43,15 +43,20 @@ $environments = array(
         $sharedParamsXML = simplexml_load_file($sharedParamsURL);
         if(!isset($_POST['subsystemID']))
         {
+          $filename = date('Y-m-d-His').$envname;
+          $file = fopen($filename, "w") or die("Unable to open file!");
+          
           echo "<option selected>- Select subsystem: -</option>";
           foreach ($sharedParamsXML->member as $member)
           {
             echo "<optgroup label=\"".$member->memberCode." - ".$member->name."\">";
             foreach($member->subsystem as $subsystem){
               echo "<option value=\"".$subsystem['id']."\">".$subsystem->subsystemCode." - ".$member->memberCode." - ".$member->name."</option>";
+              fwrite($file, $subsystem->subsystemCode.$member->memberCode.$member->name);
             }
-            echo "<\optgroup>";
+            echo "<\optgroup>".$filename;
           }
+          fclose($file);
         }
       }
       if(isset($_POST['subsystemID']))
