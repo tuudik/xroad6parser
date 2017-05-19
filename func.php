@@ -87,6 +87,6 @@ $environments = array(
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
-        echo "<a href=\".$filename."\">CSV</a>";
+        echo "<a href=\"".$filename."\">CSV</a>";
       }
       ?>
