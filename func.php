@@ -84,5 +84,5 @@ $environments = array(
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
       }
-echo $filename;
+echo $selectedEnv;
       ?>
