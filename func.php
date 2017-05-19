@@ -50,6 +50,7 @@ $environments = array(
             foreach($member->subsystem as $subsystem){
               echo "<option value=\"".$subsystem['id']."\">".$subsystem->subsystemCode." - ".$member->memberCode." - ".$member->name."</option>";
             }
+            echo "<\optgroup>";
           }
         }
       }
