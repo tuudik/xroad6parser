@@ -43,7 +43,7 @@ $environments = array(
         $sharedParamsXML = simplexml_load_file($sharedParamsURL);
         if(!isset($_POST['subsystemID']))
         {
-          $filename = $selectedEnv.".txt";
+          $filename = $selectedEnv.".csv";
           if (file_exists($filename)) {
             unlink($filename);
           }
@@ -87,6 +87,6 @@ $environments = array(
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
-        echo "<a href=\"".$selectedEnv.".txt\">CSV</a>";
+        echo "List of all subsystems: <a href=\"".$selectedEnv.".csv\">CSV</a> (last modified: ".date('Y-m-d H:i:s', filemtime($selectedEnv.".csv")).")";
       }
       ?>
