@@ -43,14 +43,24 @@ $environments = array(
         $sharedParamsXML = simplexml_load_file($sharedParamsURL);
         if(!isset($_POST['subsystemID']))
         {
+          $filename = $selectedEnv.".txt";
+          if (file_exists($filename)) {
+            unlink($filename);
+          }
+          $file = fopen($filename, "w") or die("Unable to open file!");
+          fwrite($file, "\xEF\xBB\xBFsubSystem,memberCode,memberName\n");
+          
           echo "<option selected>- Select subsystem: -</option>";
           foreach ($sharedParamsXML->member as $member)
           {
             echo "<optgroup label=\"".$member->memberCode." - ".$member->name."\">";
             foreach($member->subsystem as $subsystem){
               echo "<option value=\"".$subsystem['id']."\">".$subsystem->subsystemCode." - ".$member->memberCode." - ".$member->name."</option>";
+              fwrite($file, $subsystem->subsystemCode.",".$member->memberCode.",\"".$member->name."\"\n");
             }
+            echo "<\optgroup>";
           }
+          fclose($file);
         }
       }
       if(isset($_POST['subsystemID']))
@@ -77,5 +87,6 @@ $environments = array(
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
+        echo "<a href=\"".$selectedEnv.".txt\">CSV</a>";
       }
       ?>
