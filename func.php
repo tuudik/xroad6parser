@@ -87,6 +87,6 @@ $environments = array(
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
-        echo "<a href=\"".$selectedEnv.".csv\">CSV</a> (last modified: ".date "Y-m-d H:i:s.", filemtime($selectedEnv.".csv").")";
+        echo "<a href=\"".$selectedEnv.".csv\">CSV</a> (last modified: ".date 'Y-m-d H:i:s.', filemtime($selectedEnv.".csv").")";
       }
       ?>
