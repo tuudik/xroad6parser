@@ -49,7 +49,7 @@ $environments = array(
           }
           $file = fopen($filename, "w") or die("Unable to open file!");
           fwrite($file, "\xEF\xBB\xBFsubSystem,memberCode,memberName\n");
-          
+
           echo "<option selected>- Select subsystem: -</option>";
           foreach ($sharedParamsXML->member as $member)
           {
@@ -69,24 +69,28 @@ $environments = array(
         $securityServers = $sharedParamsXML->xpath("/ns3:conf/securityServer[client='".$subsystemID."']");
         echo "<strong>Environment: </strong>".$envName."<br/>";
         echo "<strong>Subsystem ID: </strong>".$subsystemID."<br/>";
-        foreach($securityServers as $securityServer){
-          $ssOwnerID = $securityServer->owner;
-          $ssOwner = $sharedParamsXML->xpath("/ns3:conf/member[@id='".$ssOwnerID."']")[0];
-          echo "<br/><strong>Server Owner ID: </strong>" . $ssOwnerID . "<br/>";
-          echo "<strong>Owner Name: </strong>" . $ssOwner->name. "<br/>";
-          echo "<strong>Owner Code: </strong>" .  $ssOwner->memberCode . "<br/>";
-          echo "<strong>Server Code: </strong>" . $securityServer->serverCode . "<br/>";
-          $ip = $securityServer->address;
-          if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
-            echo("<strong>Server IP: </strong> $ip <br/>");
-          } else {
-            echo("<strong>Server DNS: </strong> $ip <br/>");
-            echo("<strong>Server IP: </strong>" . gethostbyname($ip) . "<br/>");
+        if (empty($securityServers)) {
+          echo "<br/><strong>Subsystem is not registered in any Security Server</strong>";
+        } else {
+          foreach($securityServers as $securityServer){
+            $ssOwnerID = $securityServer->owner;
+            $ssOwner = $sharedParamsXML->xpath("/ns3:conf/member[@id='".$ssOwnerID."']")[0];
+            echo "<br/><strong>Server Owner ID: </strong>" . $ssOwnerID . "<br/>";
+            echo "<strong>Owner Name: </strong>" . $ssOwner->name. "<br/>";
+            echo "<strong>Owner Code: </strong>" .  $ssOwner->memberCode . "<br/>";
+            echo "<strong>Server Code: </strong>" . $securityServer->serverCode . "<br/>";
+            $ip = $securityServer->address;
+            if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+              echo("<strong>Server IP: </strong> $ip <br/>");
+            } else {
+              echo("<strong>Server DNS: </strong> $ip <br/>");
+              echo("<strong>Server IP: </strong>" . gethostbyname($ip) . "<br/>");
+            }
           }
         }
         echo "<br/><br/>Information retrieved from:<br/>";
         echo "Anchor: <a href=\"".$url."\" target=\"_blank\">".$url."</a><br/>";
         echo "Shared params: <a href=\"".$sharedParamsURL."\" target=\"_blank\">".$sharedParamsURL."</a><br/>";
-        echo "List of all subsystems: <a href=\"".$selectedEnv.".csv\">CSV</a> (last modified: ".date('Y-m-d H:i:s', filemtime($selectedEnv.".csv")).")";
+        echo "List of all subsystems in the global configuration: <a href=\"".$selectedEnv.".csv\">CSV</a> (last modified: ".date('Y-m-d H:i:s', filemtime($selectedEnv.".csv")).")";
       }
       ?>
