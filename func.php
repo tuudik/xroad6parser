@@ -27,6 +27,7 @@ $environments = array(
           if($val['id']===$selectedEnv){
             $url = $val['url'];
             $envName = $val['name'];
+            $envID = $val['id'];
           }
         }
 
@@ -67,8 +68,12 @@ $environments = array(
       {
         $subsystemID = $_POST['subsystemID'];
         $securityServers = $sharedParamsXML->xpath("/ns3:conf/securityServer[client='".$subsystemID."']");
+        $subsystemInfo = $sharedParamsXML->xpath("/ns3:conf/member/subsystem[contains(@id,'".$subsystemID."'')]/..");
+        $memberClassCodeInfo = $subsystemInfo->memberClass->code;
+        $memberCodeInfo = $subsystemInfo->memberCode;
         echo "<strong>Environment: </strong>".$envName."<br/>";
         echo "<strong>Subsystem ID: </strong>".$subsystemID."<br/>";
+        echo "<strong>FQDN: </strong>".$envID." : ".$memberClassCodeInfo." : ".$memberCodeInfo"<br/>";
         if (empty($securityServers)) {
           echo "<br/><strong>Subsystem is not registered in any Security Server</strong>";
         } else {
