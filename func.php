@@ -2,15 +2,15 @@
 $environments = array(
   0 => array(
     'id' => 'ee',
-    'url' => 'http://x-road.eu/packages/EE_public-anchor.xml',
+    'url' => 'http://x-tee.ee/anchors/EE_public-anchor.xml',
     'name' => 'EE - Production'),
     1 => array(
       'id' => 'eeTest',
-      'url' => 'http://x-road.eu/packages/ee-test_public_anchor.xml',
+      'url' => 'http://x-tee.ee/anchors/ee-test_public_anchor.xml',
       'name' => 'ee-test - Test'),
       2 => array(
         'id' => 'eeDev',
-        'url' => 'http://x-road.eu/packages/ee-dev_public_anchor.xml',
+        'url' => 'http://x-tee.ee/anchors/ee-dev_public_anchor.xml',
         'name' => 'ee-dev - Development')
       );
       function getInternalConf($url)
@@ -73,7 +73,7 @@ $environments = array(
         $memberCodeInfo = $subsystemInfo->memberCode;
         echo "<strong>Environment: </strong>".$envName."<br/>";
         echo "<strong>Subsystem ID: </strong>".$subsystemID."<br/>";
-        echo "<strong>FQDN: </strong>".$envID." : ".$memberClassCodeInfo." : ".$memberCodeInfo"<br/>";
+        echo "<strong>FQDN: </strong>".$envID." : ".$memberClassCodeInfo." : ".$memberCodeInfo."<br/>";
         if (empty($securityServers)) {
           echo "<br/><strong>Subsystem is not registered in any Security Server</strong>";
         } else {
