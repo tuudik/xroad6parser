@@ -1,16 +1,16 @@
 <?php
 $environments = array(
   0 => array(
-    'id' => 'ee',
-    'url' => 'http://x-tee.ee/anchors/EE_public-anchor.xml',
+    'id' => 'EE',
+    'url' => 'https://x-tee.ee/anchors/EE_public-anchor.xml',
     'name' => 'EE - Production'),
     1 => array(
-      'id' => 'eeTest',
-      'url' => 'http://x-tee.ee/anchors/ee-test_public_anchor.xml',
+      'id' => 'ee-test',
+      'url' => 'https://x-tee.ee/anchors/ee-test_public_anchor.xml',
       'name' => 'ee-test - Test'),
       2 => array(
-        'id' => 'eeDev',
-        'url' => 'http://x-tee.ee/anchors/ee-dev_public_anchor.xml',
+        'id' => 'ee-dev',
+        'url' => 'https://x-tee.ee/anchors/ee-dev_public_anchor.xml',
         'name' => 'ee-dev - Development')
       );
       function getInternalConf($url)
